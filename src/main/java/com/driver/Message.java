@@ -1,24 +1,19 @@
 package com.driver;
 
-import java.util.Date;
 import java.time.LocalDateTime;
+import java.util.Date;
 
-public class Message {
+public class Message implements Comparable<Message>{
     private int id;
     private String content;
     private Date timestamp;
 
-    //constructors
-    public Message() {
-        this.timestamp = new Date();
-    }
     public Message(int id, String content) {
         this.id = id;
         this.content = content;
         this.timestamp = new Date();
     }
 
-    //Getters and Setters
     public int getId() {
         return id;
     }
@@ -43,8 +38,6 @@ public class Message {
         this.timestamp = timestamp;
     }
 
-    //compare to methods for comparision
-
     @Override
     public int compareTo(Message o)
     {
@@ -54,5 +47,4 @@ public class Message {
             return 1;
         return 0;
     }
-
 }

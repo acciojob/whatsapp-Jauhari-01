@@ -2,6 +2,7 @@ package com.driver;
 
 import java.util.*;
 
+import io.swagger.models.auth.In;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -13,18 +14,20 @@ public class WhatsappRepository {
     private HashMap<Group, List<Message>> groupMessageMap;
     private HashMap<Message, User> senderMap;
     private HashMap<Group, User> adminMap;
-    private HashSet<String> userMobile;
+    private HashMap<String,User> mobileUserMap;
+    private HashMap<Integer, Message> messageMap;
     private int customGroupCount;
-    private int messageId;
+    private int messageCount;
 
     public WhatsappRepository(){
         this.groupMessageMap = new HashMap<Group, List<Message>>();
         this.groupUserMap = new HashMap<Group, List<User>>();
         this.senderMap = new HashMap<Message, User>();
         this.adminMap = new HashMap<Group, User>();
-        this.userMobile = new HashSet<>();
+        this.mobileUserMap = new HashMap<>(); // mobile number -> user
+        this.messageMap = new HashMap<>();
         this.customGroupCount = 0;
-        this.messageId = 0;
+        this.messageCount = 0;
     }
 
     public void addUser(String mobile, User user) {
